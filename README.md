@@ -1,0 +1,1 @@
+A music player app with a console UI that can play audio files in the data file, ported from UBC CPSC 210. Uses javax.sound to play audio and multithreading to process when music ends. Songs can be queued and the queue can be played, queue will autoplay the next song when the last one has finished.
