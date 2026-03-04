@@ -1,0 +1,31 @@
+{
+    "playlists": [
+        {
+            "songs": [{
+                "artist": "",
+                "name": "Mimi's Delivery Service"
+            }],
+            "name": "Rock"
+        },
+        {
+            "songs": [{
+                "artist": "",
+                "name": "Eastside"
+            }],
+            "name": "Indie Rock"
+        }
+    ],
+    "isLooping": false,
+    "fileDirectory": ".\\src\\data\\songs",
+    "pausedPosition": 165710000,
+    "queue": [
+        {
+            "artist": "",
+            "name": "Mimi's Delivery Service"
+        },
+        {
+            "artist": "",
+            "name": "No Time To Explain"
+        }
+    ]
+}

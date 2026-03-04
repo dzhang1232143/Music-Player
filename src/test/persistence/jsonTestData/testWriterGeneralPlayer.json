@@ -1,0 +1,45 @@
+{
+    "playlists": [
+        {
+            "songs": [
+                {
+                    "artist": "Goodkid",
+                    "name": "Eastside"
+                },
+                {
+                    "artist": "Goodkid",
+                    "name": "No Time To Explain"
+                }
+            ],
+            "name": "Rock"
+        },
+        {
+            "songs": [{
+                "artist": "Goodkid",
+                "name": "Mimi's Delivery Service"
+            }],
+            "name": "Alt"
+        }
+    ],
+    "isLooping": true,
+    "fileDirectory": ".\\src\\test\\model\\test data 6\\",
+    "pausedPosition": 12345,
+    "queue": [
+        {
+            "artist": "Goodkid",
+            "name": "Mimi's Delivery Service"
+        },
+        {
+            "artist": "Goodkid",
+            "name": "No Time To Explain"
+        },
+        {
+            "artist": "Goodkid",
+            "name": "Eastside"
+        },
+        {
+            "artist": "Goodkid",
+            "name": "Eastside"
+        }
+    ]
+}

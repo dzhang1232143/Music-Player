@@ -1,0 +1,47 @@
+{
+    "fileDirectory": ".\\src\\test\\persistence\\jsonTestData\\ReaderGeneralTestData\\",
+    "playlists": [
+        {
+            "name": "Rock",
+            "songs": [
+                {
+                    "name": "Eastside",
+                    "artist": "Goodkid"
+                },
+                {
+                    "name": "No Time To Explain",
+                    "artist": "Goodkid"
+                }
+            ]
+        },
+        {
+            "name": "Alt",
+            "songs": [
+                {
+                    "name": "Mimi's Delivery Service",
+                    "artist": "Goodkid"
+                }
+            ]
+        }
+    ],
+    "queue": [
+        {
+            "name": "Mimi's Delivery Service",
+            "artist": "Goodkid"
+        },
+        {
+            "name": "No Time To Explain",
+            "artist": "Goodkid"
+        },
+        {
+            "name": "Eastside",
+            "artist": "Goodkid"
+        },
+        {
+            "name": "Eastside",
+            "artist": "Goodkid"
+        }
+    ],
+    "pausedPosition": 12345,
+    "isLooping": true
+}

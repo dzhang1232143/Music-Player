@@ -1,0 +1,7 @@
+{
+    "playlists": [],
+    "isLooping": false,
+    "fileDirectory": ".\\src\\test\\persistence\\jsonTestData\\EmptyTestData",
+    "pausedPosition": 0,
+    "queue": []
+}
