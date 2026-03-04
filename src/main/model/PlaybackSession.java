@@ -43,7 +43,7 @@ public class PlaybackSession {
             clip.setMicrosecondPosition(pausedPosition);
             clip.start();
             // sleep for the length of the .wav file
-            Thread.sleep(clip.getMicrosecondLength() / 1000);
+            Thread.sleep((clip.getMicrosecondLength() - pausedPosition) / 1000 );
             playNext();
         } catch (InterruptedException e) {
             pausedPosition = clip.getMicrosecondPosition();

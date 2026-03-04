@@ -17,15 +17,9 @@
     ],
     "isLooping": false,
     "fileDirectory": ".\\src\\data\\songs",
-    "pausedPosition": 165710000,
-    "queue": [
-        {
-            "artist": "",
-            "name": "Mimi's Delivery Service"
-        },
-        {
-            "artist": "",
-            "name": "No Time To Explain"
-        }
-    ]
+    "pausedPosition": 51230000,
+    "queue": [{
+        "artist": "",
+        "name": "No Time To Explain"
+    }]
 }
