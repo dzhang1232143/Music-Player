@@ -22,14 +22,13 @@ public class ConsoleUI {
     private Player player;
     private Scanner scanner;
     private boolean isProgramRunning;
-    private String jsonSource;
+    private static final String JSON_SOURCE = ".\\src\\data\\json\\save.json";
 
     // contructor taken from FlashCard Reviewer
     // EFFECTS: creates an instance of ConsoleUI for the music player app
     public ConsoleUI() {
         this.scanner = new Scanner(System.in);
         this.isProgramRunning = true;
-        this.jsonSource = ".\\src\\data\\json\\save.json";
 
         printDivider();
         System.out.println("Welcome to the Music Player app!");
@@ -78,13 +77,13 @@ public class ConsoleUI {
     // MODIFIES: this
     // EFFECTS: load the json save of player
     private void load() {
-        JsonReader reader = new JsonReader(jsonSource);
+        JsonReader reader = new JsonReader(JSON_SOURCE);
         try {
             player = reader.read();
             System.out.println("Save successfully loaded");
         } catch (IOException e) {
             System.out.println("IOException has occured.");
-        }
+        } 
     }
 
     // method taken from FlashCard Reviewer
@@ -141,7 +140,7 @@ public class ConsoleUI {
     // MODIFIES: this
     // EFFECTS: clears all songs from the queue
     public void clearQueue() {
-        player.getQueue().clear();
+        player.clearQueue();
         System.out.println("The queue has been cleared.");
     }
 
@@ -191,9 +190,9 @@ public class ConsoleUI {
         printDivider();
     }
 
-    
+    // EFFECTS: save the current state of player as a json
     private void save() {
-        JsonWriter writer = new JsonWriter(jsonSource);
+        JsonWriter writer = new JsonWriter(JSON_SOURCE);
         try {
             writer.open();
             writer.write(player);

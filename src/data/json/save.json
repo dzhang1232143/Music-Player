@@ -3,23 +3,73 @@
         {
             "songs": [{
                 "artist": "",
-                "name": "Mimi's Delivery Service"
+                "name": "little anger"
             }],
-            "name": "Rock"
+            "name": "Chimken"
         },
         {
-            "songs": [{
-                "artist": "",
-                "name": "Eastside"
-            }],
-            "name": "Indie Rock"
+            "songs": [
+                {
+                    "artist": "Good Kid",
+                    "name": "Eastside"
+                },
+                {
+                    "artist": "",
+                    "name": "No Time To Explain"
+                }
+            ],
+            "name": "new "
+        },
+        {
+            "songs": [
+                {
+                    "artist": "Good Kid",
+                    "name": "Mimi's Delivery Service"
+                },
+                {
+                    "artist": "",
+                    "name": "No Time To Explain"
+                },
+                {
+                    "artist": "",
+                    "name": "little anger"
+                }
+            ],
+            "name": "songs"
+        },
+        {
+            "songs": [
+                {
+                    "artist": "",
+                    "name": "little anger"
+                },
+                {
+                    "artist": "Good Kid",
+                    "name": "Mimi's Delivery Service"
+                },
+                {
+                    "artist": "",
+                    "name": "No Time To Explain"
+                }
+            ],
+            "name": "all"
         }
     ],
     "isLooping": false,
-    "fileDirectory": ".\\src\\data\\songs",
-    "pausedPosition": 51230000,
-    "queue": [{
-        "artist": "",
-        "name": "No Time To Explain"
-    }]
+    "fileDirectory": ".\\src\\data\\songs\\",
+    "pausedPosition": 43430000,
+    "queue": [
+        {
+            "artist": "",
+            "name": "little anger"
+        },
+        {
+            "artist": "Good Kid",
+            "name": "Mimi's Delivery Service"
+        },
+        {
+            "artist": "",
+            "name": "No Time To Explain"
+        }
+    ]
 }

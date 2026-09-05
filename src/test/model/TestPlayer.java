@@ -249,4 +249,33 @@ public class TestPlayer {
     public void nonexistentSongTest() {
         assertNull(player.getSong("No Such Song"));
     }
+
+    @Test
+    public void clearEmptyQueueTest() {
+        player.clearQueue();
+        assertEquals(0, player.getQueue().size());
+    }
+
+    @Test
+    public void clearNonEmptyQueueTest() {
+        try {
+            player.addSongToQueue(song2);
+            player.addSongToQueue(song1);
+            player.addSongToQueue(song3);
+
+        } catch (Exception e) {
+            fail("Exception not expected");
+        }        
+        player.clearQueue();
+        assertEquals(0, player.getQueue().size());
+    }
+
+    @Test
+    public void notifyQueueChangedTest() {
+        TestListener testListener = new TestListener();
+        player.setListener(testListener);
+        player.notifyQueueChanged();
+        assertTrue(testListener.isNotified());
+    }
 }
+

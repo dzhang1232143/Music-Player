@@ -22,6 +22,7 @@ public class TestSong {
     public void constructorTest() {
         assertEquals(song.getFile().toPath().toString(), ".\\src\\test\\model\\test data 3\\Eastside.wav");
         assertEquals(song.getName(), "Eastside");
+        assertEquals(song.toString(), "Eastside");
         assertEquals(song.getArtist(), "");
     }
 

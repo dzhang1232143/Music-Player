@@ -12,7 +12,7 @@ import java.io.File;
 // wavFile of the file it is playing, and pausedPosition of what point it was last paused at
 //
 // PlaybackSession is responsible for playing and pausing playing audio of .wav files
-// a new PlaybackSession each time a new song is going to be played and the last one will be discarded
+// a new PlaybackSession is created each time a new song is going to be played and the last one will be discarded (garbage collector)
 public class PlaybackSession {
 
     private Clip clip;
@@ -43,10 +43,10 @@ public class PlaybackSession {
             clip.setMicrosecondPosition(pausedPosition);
             clip.start();
             // sleep for the length of the .wav file
-            Thread.sleep((clip.getMicrosecondLength() - pausedPosition) / 1000 );
+            Thread.sleep((clip.getMicrosecondLength() - pausedPosition) / 1000);
             playNext();
         } catch (InterruptedException e) {
-            pausedPosition = clip.getMicrosecondPosition();
+            pausedPosition = clip.getMicrosecondPosition();  // Store and keep current time stamp
         } finally {
             // close clip and audioInputStream to prevent data leak
             clip.close();
@@ -61,9 +61,10 @@ public class PlaybackSession {
             player.nextSong();
             player.play();
         } catch (EmptyQueueException e) {
+            pausedPosition = 0;
             // This exception means that we are done playing everything in the queue
-            // All that needs to be done is the thread needs to stop evaluating so we can leave this blank
-        } 
+            // All that needs to be done is the thread needs to stop evaluating
+        }
     }
 
     public long getPausedPosition() {

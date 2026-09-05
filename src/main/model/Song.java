@@ -24,11 +24,13 @@ public class Song {
     // EFFECTS: sets name to newName and uses the FileAccessor method to rename the
     // file coresponding to this song
     public void renameSong(String newName, FileAccessor fileAccessor) throws FileAlreadyExistsException {
-        wavFile = fileAccessor.renameFile(wavFile, newName);
+        EventLog.getInstance().logEvent(new Event("Renamed Song " + this + " to " + newName));
+        wavFile = fileAccessor.renameFile(wavFile, newName);        
         name = newName;
     }
 
     public void setArtist(String artist) {
+        EventLog.getInstance().logEvent(new Event("Changed Song " + this + " artist to " + artist));
         this.artist = artist;
     }
 
@@ -42,5 +44,9 @@ public class Song {
 
     public File getFile() {
         return wavFile;
+    }
+
+    public String toString() {
+        return name;
     }
 }

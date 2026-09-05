@@ -2,7 +2,7 @@ package model;
 
 // A thread that will handle playing audio while the main thread handles the ui and use input
 // All audio is played through playbackSession
-// This thread just calls playbackSession and does not handle any audio playing itself
+// This thread ONLY calls playbackSession and allows it to play audio on a new thread to allow auto playing
 public class AudioThread extends Thread {
     PlaybackSession playbackSession;
 

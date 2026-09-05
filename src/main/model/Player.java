@@ -5,6 +5,7 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingDeque;
 
 import exceptions.EmptyQueueException;
+import ui.tabs.QueueListener;
 
 // Central controller of the music app player
 //
@@ -28,6 +29,8 @@ public class Player {
     private boolean isLooping;
     private String fileDirectory;
 
+    private QueueListener listener;
+
     // EFFECTS: setup the player by creating a FileAccessor and using it to fetch
     // all songs within the data folder
     // Creates an empty queue and empty list of playlists
@@ -41,9 +44,10 @@ public class Player {
     }
 
     // MODIFIES: this
-    // EFFECTS: add playlist to playlists if it is not already in playlists
+    // EFFECTS: add playlist to playlists 
     public void addPlaylist(Playlist playlist) {
         playlists.add(playlist);
+        EventLog.getInstance().logEvent(new Event("Created new playlist: " + playlist));
     }
 
     // REQUIRES: playlists.contains(playlist)
@@ -51,6 +55,7 @@ public class Player {
     // EFFECTS: remove playlist from playlists
     public void removePlaylist(Playlist playlist) {
         playlists.remove(playlist);
+        EventLog.getInstance().logEvent(new Event("Removed playlist: " + playlist));
     }
 
     // REQUIRES: (!audioThread.isAlive() or audioThread == null) and !currentSong ==
@@ -61,13 +66,14 @@ public class Player {
     public void play() throws InterruptedException {
         audioThread = new AudioThread(playbackSession);
         audioThread.start();
+        EventLog.getInstance().logEvent(new Event("Started playing " + currentSong));
     }
 
     // MODIFIES: this
     // EFFECTS: sets the current song to the first song in the queue
     // if isLooping and currentSong != null, then put the previous currentSong at
     // the end of the queue
-    // throws EmptyQueueException if the queue is empty
+    // throws EmptyQueueException and set currentSong to null if the queue is empty
     public void nextSong() throws InterruptedException, EmptyQueueException {
         if (isLooping && currentSong != null) {
             queue.put(currentSong);
@@ -75,9 +81,19 @@ public class Player {
         if (!queue.isEmpty()) {
             currentSong = queue.take();
             playbackSession = new PlaybackSession(currentSong.getFile(), this);
+            notifyQueueChanged();
         } else {
+            currentSong = null;
+            notifyQueueChanged();
             throw new EmptyQueueException();
         }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: clears the queue
+    public void clearQueue() {
+        queue.clear();
+        EventLog.getInstance().logEvent(new Event("Queue cleared"));
     }
 
     // REQUIRES: audioThread.isAlive()
@@ -85,21 +101,26 @@ public class Player {
     // EFFECTS: pause the current playing song by interupting the audio thread
     public void pause() {
         audioThread.interrupt();
+        EventLog.getInstance().logEvent(new Event("Paused playing " + currentSong));
     }
 
     // MODIFIES: this
     // EFFECTS: add song to the end of queue
     public void addSongToQueue(Song song) throws InterruptedException {
         queue.put(song);
+        notifyQueueChanged();
+        EventLog.getInstance().logEvent(new Event("Added Song " + song + " to end of queue"));
     }
 
     // MODIFIES: this
     // EFFECTS: add all songs within playlist to the end of queue in the order they
-    // appear withing playlist
+    // appear within playlist
     public void addPlaylistToQueue(Playlist playlist) throws InterruptedException {
         for (Song s : playlist.getSongs()) {
             queue.put(s);
         }
+        notifyQueueChanged();
+        EventLog.getInstance().logEvent(new Event("Added Playlist " + playlist + " to end of queue"));
     }
 
     // EFFECTS: returns the song of given name and null if it doesn't exist
@@ -161,15 +182,27 @@ public class Player {
 
     public void setLooping(boolean isLooping) {
         this.isLooping = isLooping;
+        EventLog.getInstance().logEvent(new Event("Set looping to " + isLooping));
     }
 
     // MODFIES: this
-    // EFFECTS: set the paused position withing playbackSession
+    // EFFECTS: set the paused position within playbackSession
     public void setPausedPosition(long pausedPosition) {
         playbackSession.setPausedPosition(pausedPosition);
     }
 
     public String getFileDirectory() {
         return fileDirectory;
+    }
+
+    public void setListener(QueueListener listener) {
+        this.listener = listener;
+    }
+
+    // EFFECTS: notify the Listener that the queue has changed
+    public void notifyQueueChanged() {
+        if (this.listener != null) {
+            listener.onQueueChange();
+        }
     }
 }

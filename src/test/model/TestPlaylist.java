@@ -26,6 +26,7 @@ public class TestPlaylist {
     @Test
     public void constructorTest() {
         assertEquals(playlist.getName(), "Playlist 1");
+        assertEquals(playlist.toString(), "Playlist 1");
         assertEquals(playlist.getSongs(), new ArrayList<Song>());
     }
 

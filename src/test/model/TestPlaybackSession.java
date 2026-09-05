@@ -31,7 +31,7 @@ public class TestPlaybackSession {
         player.getAudioThread().join();
         player.getAudioThread().join();
         assertEquals(player.getQueue().size(), 0);
-        assertEquals(player.getCurrentSong(), songs[2]);
+        assertEquals(player.getCurrentSong(), null);
 
     }
 }

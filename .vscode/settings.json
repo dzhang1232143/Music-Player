@@ -1,0 +1,8 @@
+{
+    "java.project.referencedLibraries": [
+        "Sim/sm213-vscode/lib/**/*.jar",
+        "lib/JacocoExcludeFromReportAnnotation.jar",
+        "lib/json-20250517.jar",
+        "lib/junit-platform-console-standalone-1.10.2.jar"
+    ]
+}

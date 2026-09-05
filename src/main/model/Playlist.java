@@ -19,9 +19,10 @@ public class Playlist {
     public boolean addSong(Song song) {
         if (!songs.contains(song)) {
             songs.add(song);
+            EventLog.getInstance().logEvent(new Event("Added Song " + song + " to Playlist " + this));
             return true;
         }
-        return false;
+        return false;   
     }
 
     // EFFECTS: remove song from songs if it is within songs
@@ -29,13 +30,16 @@ public class Playlist {
     public boolean removeSong(Song song) {
         if (songs.contains(song)) {
             songs.remove(song);
-            return true;
+            EventLog.getInstance().logEvent(new Event("Removed Song " + song + " from Playlist " + this));
+            return true;         
         }
         return false;
     }
 
     public void setName(String newName) {
+        EventLog.getInstance().logEvent(new Event("Renamed Playlist " + this + " to " + newName));
         name = newName;
+        
     }
 
     public ArrayList<Song> getSongs() {
@@ -43,6 +47,10 @@ public class Playlist {
     }
 
     public String getName() {
+        return name;
+    }
+
+    public String toString() {
         return name;
     }
 }
