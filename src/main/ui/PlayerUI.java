@@ -69,15 +69,15 @@ public class PlayerUI extends JFrame {
     private void loadTabs() {
         QueueTab queueTab = new QueueTab(this);
         PlaylistTab playlistTab = new PlaylistTab(this);
-        VisualTab visualTab = new VisualTab(this);
+        // VisualTab visualTab = new VisualTab(this);
 
 
         sidebar.add(queueTab, QUEUE_TAB_INDEX);
         sidebar.setTitleAt(QUEUE_TAB_INDEX, "Queue");
         sidebar.add(playlistTab, PLAYLISTS_TAB_INDEX);
         sidebar.setTitleAt(PLAYLISTS_TAB_INDEX, "Playlists");
-        sidebar.add(visualTab, VISUAL_TAB_INDEX);
-        sidebar.setTitleAt(VISUAL_TAB_INDEX, "Visual Tab");
+        // sidebar.add(visualTab, VISUAL_TAB_INDEX);
+        // sidebar.setTitleAt(VISUAL_TAB_INDEX, "Visual Tab");
 
         player.setListener(queueTab);
     }

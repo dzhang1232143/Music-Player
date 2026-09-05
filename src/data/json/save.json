@@ -1,10 +1,16 @@
 {
     "playlists": [
         {
-            "songs": [{
-                "artist": "",
-                "name": "little anger"
-            }],
+            "songs": [
+                {
+                    "artist": "",
+                    "name": "little anger"
+                },
+                {
+                    "artist": "Good Kid",
+                    "name": "Eastside"
+                }
+            ],
             "name": "Chimken"
         },
         {
@@ -57,12 +63,8 @@
     ],
     "isLooping": false,
     "fileDirectory": ".\\src\\data\\songs\\",
-    "pausedPosition": 43430000,
+    "pausedPosition": 172780000,
     "queue": [
-        {
-            "artist": "",
-            "name": "little anger"
-        },
         {
             "artist": "Good Kid",
             "name": "Mimi's Delivery Service"
