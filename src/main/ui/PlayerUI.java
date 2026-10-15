@@ -35,16 +35,19 @@ public class PlayerUI extends JFrame {
     
     // MODIFIES: this
     // EFFECTS: creates an instance of PlayerUI as a representation of a Player
-    private PlayerUI() {
+    public PlayerUI() {
         super("Music Player");
         setSize(WIDTH, HEIGHT);
         setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         
-        handleStartupChoice();
+        loadPlayer();
+        // handleStartupChoice();
         addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent e) {
-                handleExit();
+                savePlayer();
+                dispose();
+                // handleExit();
                 if (player.isPlaying()) {
                     player.pause();
                 }
